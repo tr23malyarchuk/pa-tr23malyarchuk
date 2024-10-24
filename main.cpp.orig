@@ -5,7 +5,11 @@ int main() // instantiating the class and calling the function
 {
     Arctangent arctan;
     double x = 0.5;
+<<<<<<< HEAD
+    int n = 3;
+=======
     int n = 10;
+>>>>>>> branchA
 
     double result = arctan.FuncA(x, n);
     std::cout << "Arctangent of " << x << " is approximately: " << result << std::endl;
