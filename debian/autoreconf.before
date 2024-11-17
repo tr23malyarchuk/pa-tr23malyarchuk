@@ -1,6 +1,3 @@
-symlink  ./missing
-symlink  ./install-sh
-symlink  ./depcomp
 92b763e561008bd75c6728aac4029bf0  ./Arctangent.cpp
 69d4aa370b49f260070a2f593e0721f2  ./arctangent
 a852399636b1c36050348541ca91f691  ./configure
@@ -8,7 +5,7 @@ a6e90a4ae058a35202a75e2eaaf88d83  ./aclocal.m4
 ba76b661bd2c71cfceb76d22f3b9524d  ./Makefile.in
 96b3bcfd1772e946872430475cae73da  ./Arctangent.h
 70a9ef4d79a5c2b383d01a485dd14701  ./main.cpp
-dbde9598ed506a940d8006af8208cb52  ./.github/workflows/main.yml
+60bc6138888bd9c36a348a9223a85bde  ./.github/workflows/main.yml
 ed5b4b4f12c9b633f765580db4ff32bc  ./config.h.in
 01df02b7a96e79abc864e807994ea4f9  ./Makefile.am
 aef196d3258c4649853c471218f77edc  ./configure.ac

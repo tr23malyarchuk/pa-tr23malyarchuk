@@ -1,0 +1,35 @@
+Format: 1.8
+Date: Mon, 18 Nov 2024 00:37:49 +0200
+Source: program
+Binary: program
+Built-For-Profiles: noudeb
+Architecture: source amd64
+Version: 1.0-1
+Distribution: unstable
+Urgency: medium
+Maintainer: Bohdan Maliarchuk <malyarchuk.bogdan@lll.kpi.ua>
+Changed-By: bohdan <malyarchuk.bogdan@lll.kpi.ua>
+Description:
+ program    - Arctangent calculation program
+Changes:
+ program (1.0-1) unstable; urgency=medium
+ .
+   * Initial release. (Closes: #XXXXXX)
+Checksums-Sha1:
+ a8461fc6bd2c172302b2ee0b8267e3f813eb478c 584 program_1.0-1.dsc
+ bc766198a1115190c9b39df2fe83226a53e13dcf 461531 program_1.0-1.tar.gz
+ 1f714a77cc921c2a2d29870a18e32276ca08570d 14314 program-dbgsym_1.0-1_amd64.ddeb
+ 81910388f3dfcdb50ed5b94ebf44e6bccd0cfac2 6423 program_1.0-1_amd64.buildinfo
+ 17b156bc869fed997f924935e296511c1f7a7e49 3382 program_1.0-1_amd64.deb
+Checksums-Sha256:
+ aada9101c4bf45809213e4cdd84b1a92f9594e2f41a11618dc7f0177c9aa100a 584 program_1.0-1.dsc
+ f788b7aa65ee274245c056b623d185e19305566a58b3686e5d9ed42aca2ab97e 461531 program_1.0-1.tar.gz
+ b2920c277ead5df321cd172d41c40a4dcb76f83a29a7f38c3501fa84203a9e0e 14314 program-dbgsym_1.0-1_amd64.ddeb
+ 7b0189a95e4227cbf2e0fac7c0c5e5797326320c4957b3d3460580ec0231d22f 6423 program_1.0-1_amd64.buildinfo
+ c9aee56e95a93fd83bbe31d5dbad2db6b7b4e731894f35df1556f8cbf241c3ac 3382 program_1.0-1_amd64.deb
+Files:
+ e2cd776b7cf5589926d2ea97db9368a5 584 utils optional program_1.0-1.dsc
+ bbfd1fa57854b5d07c2816bc9e750bff 461531 utils optional program_1.0-1.tar.gz
+ 2b82132688bb910d0e48c63eee92814c 14314 debug optional program-dbgsym_1.0-1_amd64.ddeb
+ e242aa0b7f589d3ba8e5c724de471fab 6423 utils optional program_1.0-1_amd64.buildinfo
+ 50893d0f80bb8ea1b063bed60555031e 3382 utils optional program_1.0-1_amd64.deb
