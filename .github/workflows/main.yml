@@ -1,12 +1,12 @@
-name: C++ Build and Package Pipeline
+name: C++ Build and Debian Package Pipeline
 
 on:
   push:
     branches:
-      - branchAutomake
+      - branchAutoPackage
   pull_request:
     branches:
-      - branchAutomake
+      - branchAutoPackage
 
 jobs:
   build-and-package:
@@ -14,12 +14,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Install Autotools and dependencies
+      - name: Install build tools and debhelper
         run: |
           sudo apt-get update
-          sudo apt-get install -y autoconf automake libtool build-essential
+          sudo apt-get install -y autoconf automake devscripts debhelper build-essential
 
       - name: Generate configuration files
         run: |
@@ -34,14 +34,13 @@ jobs:
           make
           ./program
 
-      - name: Create distribution tarball
+      - name: Build Debian package
         run: |
-          make dist
-          ls -l *.tar.gz # Verify tarball creation
+          dpkg-buildpackage -us -uc
 
-      - name: Upload distribution tarball
-        uses: actions/upload-artifact@v3
+      - name: Upload .deb package
+        uses: actions/upload-artifact@v4
         with:
-          name: program-tarball
-          path: "*.tar.gz"
+          name: debian-package
+          path: "../*.deb"
 

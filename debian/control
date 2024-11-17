@@ -1,0 +1,16 @@
+Source: program
+Section: utils
+Priority: optional
+Maintainer: Bohdan Maliarchuk <malyarchuk.bogdan@lll.kpi.ua>
+Build-Depends: debhelper (>= 12), autotools-dev, g++, make
+Standards-Version: 4.5.0
+Homepage: https://tr23malyarchuk-debian.com
+
+Package: program
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Arctangent calculation program
+ A simple C++ program that computes an approximation
+ of the arctangent of a given number using a Taylor
+ series expansion.
+

@@ -1,0 +1,13 @@
+Package: program
+Version: 1.0-1
+Architecture: amd64
+Maintainer: Bohdan Maliarchuk <malyarchuk.bogdan@lll.kpi.ua>
+Installed-Size: 23
+Depends: libc6 (>= 2.34), libstdc++6 (>= 4.4)
+Section: utils
+Priority: optional
+Homepage: https://tr23malyarchuk-debian.com
+Description: Arctangent calculation program
+ A simple C++ program that computes an approximation
+ of the arctangent of a given number using a Taylor
+ series expansion.
