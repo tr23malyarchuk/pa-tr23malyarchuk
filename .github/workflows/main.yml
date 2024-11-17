@@ -1,12 +1,12 @@
-name: C++ Build and Debian Package Pipeline
+name: C++ Build and Test Pipeline
 
 on:
   push:
     branches:
-      - branchAutoPackage
+      - branchAutoTest
   pull_request:
     branches:
-      - branchAutoPackage
+      - branchAutoTest
 
 jobs:
   build-and-package:
@@ -19,7 +19,7 @@ jobs:
       - name: Install build tools and debhelper
         run: |
           sudo apt-get update
-          sudo apt-get install -y autoconf automake devscripts debhelper build-essential
+          sudo apt-get install -y autoconf automake libtool build-essential
 
       - name: Generate configuration files
         run: |
@@ -32,15 +32,16 @@ jobs:
         run: |
           ./configure
           make
-          ./program
 
-      - name: Build Debian package
+      - name: Run unit tests
         run: |
-          dpkg-buildpackage -us -uc
+          make check
 
-      - name: Upload .deb package
-        uses: actions/upload-artifact@v4
-        with:
-          name: debian-package
-          path: "./*.deb"
+      - name: Verify the test output
+        run: |
+          ./test_arctangent # Ensure the unit test runs successfully
+
+      - name: Run the program
+        run: |
+          ./program
 
