@@ -5,9 +5,9 @@ Version: 1.0-1
 Auto-Built-Package: debug-symbols
 Architecture: amd64
 Maintainer: Bohdan Maliarchuk <malyarchuk.bogdan@lll.kpi.ua>
-Installed-Size: 29
+Installed-Size: 28
 Depends: program (= 1.0-1)
 Section: debug
 Priority: optional
 Description: debug symbols for program
-Build-Ids: 184095bbb4327aaf26218ac087631df1901422e8
+Build-Ids: 40d9b754f34e6943ecbcb200e78a9b92a872ed30
