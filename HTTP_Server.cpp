@@ -3,20 +3,11 @@
 #include <string.h>
 #include <unistd.h>
 #include <arpa/inet.h>
-#include <math.h>
 #include <time.h>
+#include "Arctangent.h"  // Using trigonometric function class from PA#3
 
 #define PORT 8081
 #define BUFFER_SIZE 1024
-
-double calculate_arctangent(double x, int n) {
-    double sum_n = 0;
-    for (int i = 0; i < n; ++i) {
-        double term = (pow(-1, i) * pow(x, 2 * i + 1)) / (2 * i + 1);
-        sum_n += term;
-    }
-    return sum_n;
-}
 
 void sort_array(double *array, int size) {
     for (int i = 0; i < size - 1; ++i) {
@@ -37,7 +28,6 @@ void send_response(int client_socket, const char *status, const char *content_ty
     write(client_socket, response, strlen(response));
 }
 
-// Define TEST_MODE to exclude the main function when testing
 #ifndef TEST_MODE
 int main() {
     int server_socket, client_socket;
@@ -81,8 +71,10 @@ int main() {
             double x = atof(x_str);
             int n = atoi(n_str);
 
+            // Create an instance of Arctangent and call FuncA
+            Arctangent arctan;
             clock_t start = clock();
-            double result = calculate_arctangent(x, n);
+            double result = arctan.FuncA(x, n); // Use FuncA from Arctangent class
             clock_t end = clock();
 
             double elapsed_time = ((double)(end - start)) / CLOCKS_PER_SEC;
@@ -105,8 +97,10 @@ int main() {
                 continue;
             }
 
+            // Use Arctangent::FuncA to calculate the values for the array
+            Arctangent arctan;
             for (int i = 0; i < size; ++i) {
-                array[i] = calculate_arctangent(0.5 + i * 0.01, 100);
+                array[i] = arctan.FuncA(0.5 + i * 0.01, 100);
             }
 
             clock_t start = clock();

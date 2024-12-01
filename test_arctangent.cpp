@@ -6,6 +6,7 @@
 #include <ctime>
 #include <cstdlib>
 
+#include "Arctangent.h"
 #include "HTTP_Server.cpp"
 
 void test_all() {
@@ -13,21 +14,25 @@ void test_all() {
     int n = 10;
     double result;
 
+    Arctangent arctan;
+
     clock_t total_start = clock();
 
+    // Test 1: Arctangent calculation
     clock_t start = clock();
     for (int i = 0; i < 10000; ++i) {
-        result = calculate_arctangent(x, n);
+        result = arctan.FuncA(x, n);
     }
     clock_t end = clock();
     double arctangent_time = ((double)(end - start)) / CLOCKS_PER_SEC;
     std::cout << "Arctangent calculation time: " << arctangent_time << " seconds" << std::endl;
 
+    // Test 2: Sorting large array
     int size = 100000;
     double *array_large = (double *)malloc(size * sizeof(double));
 
     for (int i = 0; i < size; ++i) {
-        array_large[i] = calculate_arctangent(0.5 + i * 0.01, 100);
+        array_large[i] = arctan.FuncA(0.5 + i * 0.01, 100);
     }
 
     start = clock();
@@ -40,7 +45,6 @@ void test_all() {
 
     clock_t total_end = clock();
     double total_time = ((double)(total_end - total_start)) / CLOCKS_PER_SEC;
-
     std::cout << "Total calculation time: " << total_time << " seconds" << std::endl;
 
     assert(total_time >= 5.0 && total_time <= 20.0);
