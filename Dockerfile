@@ -10,7 +10,7 @@ RUN wget https://raw.githubusercontent.com/tr23malyarchuk/pa-tr23malyarchuk/bran
     && wget https://raw.githubusercontent.com/tr23malyarchuk/pa-tr23malyarchuk/branchHTTPserver/Arctangent.h \
     && wget https://raw.githubusercontent.com/tr23malyarchuk/pa-tr23malyarchuk/branchHTTPserver/Arctangent.cpp
 
-RUN g++ -o http_ser-o HTTP_Server.cpp Arctangent.cpp -lm
+RUN g++ -o http_ser-o HTTP_Server.cpp Arctangent.cpp -lm -static
 
 FROM alpine:latest
 
