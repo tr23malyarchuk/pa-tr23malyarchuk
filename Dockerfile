@@ -2,7 +2,7 @@ FROM gcc:latest AS builder
 
 RUN apt-get update && apt-get install -y \
     build-essential \
-    libpthread-stubs0-dev \
+    libpthread-stubs0-dev
 
 WORKDIR /app
 
