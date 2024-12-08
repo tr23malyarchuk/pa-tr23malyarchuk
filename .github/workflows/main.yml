@@ -1,47 +1,41 @@
-name: C++ Build and Test Pipeline
+name: AMD64&ARM64 Docker image build
 
 on:
   push:
-    branches:
-      - branchAutoTest
+    branches: [ "*" ]
   pull_request:
-    branches:
-      - branchAutoTest
+    branches: [ "*" ]
+  workflow_dispatch:
+    branches: [ "*" ]
 
 jobs:
-  build-and-package:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Install build tools and debhelper
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y autoconf automake libtool build-essential
+      - name: QEMU install
+        uses: docker/setup-qemu-action@v3
 
-      - name: Generate configuration files
-        run: |
-          aclocal
-          autoconf
-          autoheader
-          automake --add-missing
+      - name: Install Docker Buildx
+        uses: docker/setup-buildx-action@v1
 
-      - name: Configure and build
-        run: |
-          ./configure
-          make
+      - name: build ls
+        run: docker buildx ls
 
-      - name: Run unit tests
-        run: |
-          make check
+      - name: Log in to dockerhub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Verify the test output
-        run: |
-          ./test_arctangent # Ensure the unit test runs successfully
+      - name: Build AMD64 Dockerfile image
+        run: docker build --platform=linux/amd64 -t tr23malyarchuk/pa-tr23malyarchuk:amd64 --push .
 
-      - name: Run the program
-        run: |
-          ./program
+      - name: Build ARM64 Dockerfile image
+        run: docker build --platform=linux/arm64 -t tr23malyarchuk/pa-tr23malyarchuk:arm64 --push .
+
+      - name: Create manifest
+        run: docker manifest create tr23malyarchuk/pa-tr23malyarchuk --amend tr23malyarchuk/pa-tr23malyarchuk:amd64 --amend tr23malyarchuk/pa-tr23malyarchuk:arm64
+
+      - name: Push manifest to docker hub
+        run: docker manifest push tr23malyarchuk/pa-tr23malyarchuk
 
