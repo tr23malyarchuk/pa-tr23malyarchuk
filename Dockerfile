@@ -6,7 +6,9 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-COPY HTTP_Server.cpp Arctangent.h Arctangent.cpp /app/
+RUN wget https://raw.githubusercontent.com/tr23malyarchuk/pa-tr23malyarchuk/branchHTTPserver/HTTP_Server.cpp \
+    && wget https://raw.githubusercontent.com/tr23malyarchuk/pa-tr23malyarchuk/branchHTTPserver/Arctangent.h \
+    && wget https://raw.githubusercontent.com/tr23malyarchuk/pa-tr23malyarchuk/branchHTTPserver/Arctangent.cpp
 
 RUN g++ -o http_ser-o HTTP_Server.cpp Arctangent.cpp -lm
 
