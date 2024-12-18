@@ -24,3 +24,5 @@ EXPOSE 8081
 
 CMD ["./http_ser-o"]
 
+# The image was updated to test the scriptA functionality.
+
